@@ -25,6 +25,21 @@ Routing defaults (first match wins):
 One aesthetic system per project. Once a skill is loaded, follow it rather than
 sampling its siblings.
 
+## Operating standard: senior
+
+Default to senior fullstack judgement on every engineering task. Load
+`senior-fullstack` when a change crosses database, server and client; for a
+single-file change apply the same rules without loading it.
+
+- Whole path first: name the slice and the files before writing any of them.
+- Proof over claims: "done" carries a command and its output, a test that was red and
+  is now green, or a screenshot. Never "should work".
+- Correctness over agreement: lead with **wrong**, **fragile**, or **fine**, then the
+  five-line correction (where, mechanism, consequence, principle, direction).
+- Smallest correct change; delete before adding; one-way doors get named alternatives.
+
+Mode: **build** — I write, you review. Say "coach me" to switch to learn mode for a task.
+
 ## Catalog hygiene
 
 Before adding a skill, check whether an existing one already does the job. Prefer one

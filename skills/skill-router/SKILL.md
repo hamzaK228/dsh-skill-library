@@ -22,6 +22,12 @@ All skills live in one folder: `~/.dsh/skills`. `~/.claude/skills` and
 `~/.zcode/skills` are install sources only; run `~/.dsh/bin/sync-skills` after an
 install to copy new directories in. Edit or delete a skill only in that one folder.
 
+## Default posture
+
+Engineering work runs at `senior-fullstack` standard even when that skill is not
+loaded: whole path first, proof instead of claims, smallest correct change. Load the
+body only when the change crosses layers and the step sequence is worth the tokens.
+
 ## Selection procedure
 
 1. Match the task against catalog descriptions only. Do not load a skill to inspect it.
@@ -82,6 +88,7 @@ Use this when two or more candidates overlap.
 | React/Next performance | `vercel-react-best-practices` |
 | Module boundaries, seams, API shape | `codebase-design` |
 | Naming and glossary | `domain-modeling` |
+| Cross-layer change: db → server → client | `senior-fullstack` |
 | PR description | `pr` |
 | Over-engineered solution, simpler change, dead code | `ponytail` (lite/full/ultra); `ponytail-review` for a diff |
 | "What does this codebase actually look like" / cross-file map | `graphify` (needs `graphify` CLI) |

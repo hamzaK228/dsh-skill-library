@@ -4,6 +4,7 @@ set -euo pipefail
 LIB="$(cd "$(dirname "$0")/.." && pwd)"
 command -v rsync >/dev/null || { echo "rsync required"; exit 1; }
 rsync -a --delete "$HOME/.dsh/skills/" "$LIB/skills/"
+cp "$HOME/.dsh/AGENTS.md" "$LIB/AGENTS.md"
 node "$LIB/tools/build-catalog.mjs"
 cd "$LIB"
 git add -A
