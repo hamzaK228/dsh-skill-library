@@ -133,6 +133,44 @@ Measure before and after:
 node -e 'const fs=require("fs"),p=require("path");let t=0,n=0;for(const d of fs.readdirSync("skills")){const f=p.join("skills",d,"SKILL.md");if(!fs.existsSync(f))continue;const m=fs.readFileSync(f,"utf8").match(/^---\n([\s\S]*?)\n---/);const de=(m&&m[1].match(/^description:\s*(.*)$/m)||[])[1]||"";t+=de.length;n++}console.log(n+" skills, ~"+Math.round(t/4)+" tokens/turn")'
 ```
 
+
+## Project presets
+
+Skills are global, but each project needs a different subset. `tools/newproj`
+writes a project-local `AGENTS.md` that names the must-have skills for that kind
+of work; DSH loads it automatically when the project is opened, and its
+instructions are more specific than the global policy.
+
+```bash
+tools/newproj webapp  ~/code/my-saas
+tools/newproj landing ~/code/campaign
+tools/newproj motion  ~/code/launch-film
+tools/newproj api     ~/code/service
+tools/newproj audit   ~/code/legacy-app
+tools/newproj redesign ~/code/dashboard
+```
+
+| Preset | Must-have skills |
+|---|---|
+| `webapp` | senior-fullstack, vercel-react-best-practices, tdd, shadcn, motion, design-taste-frontend |
+| `landing` | design-taste-frontend *(or build-awwwards-quality-sites)*, impeccable, motion |
+| `motion` | vizavi-motion, remotion-best-practices, motion, anime |
+| `api` | senior-fullstack, tdd, semgrep, codeql, sarif-parsing |
+| `audit` | ponytail-audit, semgrep, codeql, sarif-parsing, testing-api-security-with-owasp-top-10, yakit-yak |
+| `redesign` | impeccable, design-md, design-taste-frontend, break-ui |
+
+Commit the generated `AGENTS.md`: it documents the project's skill contract for
+every agent and every teammate, and it is what makes selection automatic instead
+of a per-session decision.
+
+## Model choice
+
+Default stays `deepseek-flash` at low reasoning effort — cheapest per turn and
+strong enough for routing, edits, and most frontend work. Switch to
+`deepseek-v4-pro` for architecture decisions, security audits, cross-layer
+refactors, and debugging that survives two failed attempts; raise reasoning effort
+at the same time.
+
 ## License and provenance
 
 Skills come from many upstream authors under their own licenses — see

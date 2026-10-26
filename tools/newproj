@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+# newproj <type> <dir> — scaffold a project with a project-local AGENTS.md that
+# tells the agent which skills this project actually needs.
+set -euo pipefail
+
+TYPE="${1:-}"; DIR="${2:-}"
+if [ -z "$TYPE" ] || [ -z "$DIR" ]; then
+  echo "usage: newproj <webapp|landing|motion|api|audit|redesign> <dir>"; exit 1
+fi
+
+case "$TYPE" in
+  webapp)
+    TITLE="Full-stack web app"
+    STACK="Next.js (App Router) + TypeScript + Tailwind + shadcn/ui + Supabase + Vercel"
+    SKILLS="senior-fullstack — any change crossing db → server → client
+vercel-react-best-practices — React/Next rendering, data fetching, bundle size
+tdd — every behaviour starts as a failing test
+shadcn — components, registry, presets
+motion — UI animation, springs, gestures
+design-taste-frontend — the visual direction, once, at the start"
+    DEFAULTS="Schema changes ship expand → backfill → migrate → contract.
+Authorization is enforced per row in the database, never in the client.
+Deploys go through Vercel; production reads are verified, not assumed."
+    DONE="tests green, types/lint clean, migration applies and reverses, the change is visible in a browser."
+    ;;
+  landing)
+    TITLE="Marketing / landing site"
+    STACK="Static or Next.js + Tailwind + GSAP or Motion"
+    SKILLS="design-taste-frontend — normal ambition, anti-slop art direction
+build-awwwards-quality-sites — ONLY if the brief is cinematic or motion-led (never both)
+impeccable — critique and polish once the page exists
+motion — scroll and hover choreography"
+    DEFAULTS="One art direction for the whole page; no mixed aesthetic systems.
+Real copy and real assets; no placeholder testimonials or invented logos.
+Lighthouse and reduced-motion behaviour checked before handoff."
+    DONE="page builds, looks right at 360/768/1440, keyboard focus visible, reduced-motion honoured."
+    ;;
+  motion)
+    TITLE="Motion / video piece"
+    STACK="HTML/CSS/SVG timeline, Remotion, or Blender; ffmpeg for encode"
+    SKILLS="vizavi-motion — concept, storyboard, motion system, export
+remotion-best-practices — when the output is a rendered MP4 from React
+motion — interface-level animation inside a product page
+anime — vanilla timelines, SVG morphing, scroll"
+    DEFAULTS="Storyboard and timing before code. One timeline owner, not three.
+Every asset has provenance; audio levels checked at -14 LUFS for web."
+    DONE="exported file plays end to end, correct duration and resolution, reviewed frame by frame."
+    ;;
+  api)
+    TITLE="API / backend service"
+    STACK="TypeScript or Python service + Postgres"
+    SKILLS="senior-fullstack — contracts, data shape, failure modes
+tdd — contract tests at the boundary first
+semgrep — static scan before merge
+codeql — deep taint analysis on auth and data paths
+sarif-parsing — triage and dedupe findings"
+    DEFAULTS="Every endpoint names its timeout, retry, and idempotency behaviour.
+Authz decided per row and per field. Errors use one shape across the API."
+    DONE="contract tests green, migration reversible, semgrep/codeql clean on the diff."
+    ;;
+  audit)
+    TITLE="Security / quality audit"
+    STACK="Existing codebase, read-mostly"
+    SKILLS="ponytail-audit — whole-repo quality and risk sweep
+semgrep — fast rule-based scan
+codeql — dataflow and taint analysis where it matters
+sarif-parsing — merge and dedupe results
+testing-api-security-with-owasp-top-10 — API surface review
+yakit-yak — live traffic, ports, captured flows"
+    DEFAULTS="Findings are ranked by exploitability × impact, each with a concrete fix.
+No changes are made during audit; write the report first.
+Only test assets you own or have written permission to test."
+    DONE="report lists findings with file:line, mechanism, impact, fix, and what was verified."
+    ;;
+  redesign)
+    TITLE="UI redesign"
+    STACK="Existing frontend"
+    SKILLS="impeccable — audit, hierarchy, layout, polish
+design-md — borrow a proven design language (Linear, Stripe, Apple…)
+design-taste-frontend — when the direction must be newly art-directed
+break-ui — worst-case data and edge states"
+    DEFAULTS="Screenshot the current state before changing anything.
+One change per commit, so a regression is attributable.
+Accessibility regressions are bugs, not polish."
+    DONE="before/after screenshots at two breakpoints, keyboard path intact, no layout shift."
+    ;;
+  *) echo "unknown type: $TYPE"; exit 1 ;;
+esac
+
+mkdir -p "$DIR"
+NAME="$(basename "$(cd "$DIR" && pwd)")"
+FILE="$DIR/AGENTS.md"
+if [ -f "$FILE" ]; then
+  echo "refusing to overwrite existing $FILE"; exit 1
+fi
+
+cat > "$FILE" <<EOF
+# $NAME — $TITLE
+
+Stack: $STACK
+
+## Skills for this project
+
+Load from this list, **at most two per task**. Do not load a skill to browse it.
+
+$SKILLS
+
+## Defaults
+
+$DEFAULTS
+
+## Done means
+
+$DONE
+EOF
+
+echo "created $FILE"
+echo "type: $TYPE"
+echo "tip: run \`git init\` in $DIR so DSH treats it as the project root"
