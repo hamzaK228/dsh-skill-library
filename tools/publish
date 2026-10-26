@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Snapshot ~/.dsh/skills into this repo, refresh the catalog, and push.
+set -euo pipefail
+LIB="$(cd "$(dirname "$0")/.." && pwd)"
+command -v rsync >/dev/null || { echo "rsync required"; exit 1; }
+rsync -a --delete "$HOME/.dsh/skills/" "$LIB/skills/"
+node "$LIB/tools/build-catalog.mjs"
+cd "$LIB"
+git add -A
+if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+git commit -q -m "Sync skills $(date +%F)"
+git push -q
+echo "published $(ls "$LIB/skills" | wc -l) skills"
