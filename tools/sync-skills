@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Mirror skills installed by `npx skills add` (and ZCode) into the single
+# DSH root, so the catalog stays in one folder. Existing names are never
+# overwritten; remove a directory by hand to replace a skill.
+set -euo pipefail
+DEST="$HOME/.dsh/skills"
+mkdir -p "$DEST"
+IGNORE="$HOME/.dsh/syncignore"
+skip=""
+[ -f "$IGNORE" ] && skip=" $(grep -v "^#" "$IGNORE" | tr "\n" " ") "
+added=0
+for root in "$HOME/.claude/skills" "$HOME/.zcode/skills"; do
+  [ -d "$root" ] || continue
+  for d in "$root"/*; do
+    [ -d "$d" ] || continue
+    n=$(basename "$d")
+    if [ -e "$DEST/$n" ]; then continue; fi
+    case "$skip" in *" $n "*) continue ;; esac
+    cp -aL -- "$d" "$DEST/$n" && echo "added $n" && added=$((added+1))
+  done
+done
+echo "synced $added new skill(s); total $(ls "$DEST" | wc -l)"
