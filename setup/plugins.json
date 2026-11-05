@@ -1,0 +1,320 @@
+{
+  "snapshot_date": "2026-11-05",
+  "plugins": [
+    {
+      "id": "browser@openai-bundled",
+      "name": "Browser",
+      "version": "26.1013.40934",
+      "marketplace": "openai-bundled",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/lib/oai_browser_use/plugin",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "code-review@openai-bundled",
+      "name": "Code Review",
+      "version": "26.1013.40934",
+      "marketplace": "openai-bundled",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/plugins/pull-requests",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "codex-app-tools@openai-bundled",
+      "name": "codex-app-tools",
+      "version": "0.1.6",
+      "marketplace": "openai-bundled",
+      "license": "Proprietary",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "unified-computer-use@openai-bundled",
+      "name": "unified-computer-use",
+      "version": "26.1013.40934",
+      "marketplace": "openai-bundled",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "visualize@openai-bundled",
+      "name": "Visualize",
+      "version": "1.0.50",
+      "marketplace": "openai-bundled",
+      "license": "Proprietary",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "documents@openai-primary-runtime",
+      "name": "Documents",
+      "version": "26.1030.10813",
+      "marketplace": "openai-primary-runtime",
+      "license": "MIT",
+      "repository": "https://github.com/openai/openai",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "pdf@openai-primary-runtime",
+      "name": "PDF",
+      "version": "26.1030.10813",
+      "marketplace": "openai-primary-runtime",
+      "license": "MIT",
+      "repository": "https://github.com/openai/openai",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "presentations@openai-primary-runtime",
+      "name": "Presentations",
+      "version": "26.1030.10813",
+      "marketplace": "openai-primary-runtime",
+      "license": "MIT",
+      "repository": "https://github.com/openai/openai",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "spreadsheets@openai-primary-runtime",
+      "name": "Spreadsheets",
+      "version": "26.1030.10813",
+      "marketplace": "openai-primary-runtime",
+      "license": "MIT",
+      "repository": "https://github.com/openai/openai",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "template-creator@openai-primary-runtime",
+      "name": "Template Creator",
+      "version": "26.1030.10813",
+      "marketplace": "openai-primary-runtime",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "app-69ef18c674308191a2f952431f91ea61@openai-curated-remote",
+      "name": "Context7",
+      "version": "1.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "app-6a502589384081919c5decf93496c9d1@openai-curated-remote",
+      "name": "Railway",
+      "version": "1.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "app-6a9760b823ec81919684c5efd83caf43@openai-curated-remote",
+      "name": "Strix",
+      "version": "1.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "cecilialabs-ffmpeg@openai-curated-remote",
+      "name": "Cecil-IA Labs FFmpeg",
+      "version": "2.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/cecil-ia-labs/ffmpeg-dev",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "cloud-environment@openai-curated-remote",
+      "name": "Cloud Environment",
+      "version": "0.1.2",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "codex-security@openai-curated-remote",
+      "name": "Codex Security",
+      "version": "0.1.32",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins/plugins/codex-security",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "defense-factory@openai-curated-remote",
+      "name": "Codex Security Cloud",
+      "version": "0.1.1",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "figma@openai-curated-remote",
+      "name": "Figma",
+      "version": "17.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "github@openai-curated-remote",
+      "name": "GitHub",
+      "version": "0.1.13-77c10e110b37",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/openai/plugins",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "gmail@openai-curated-remote",
+      "name": "Gmail",
+      "version": "0.1.10",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "google-calendar@openai-curated-remote",
+      "name": "Google Calendar",
+      "version": "1.2.7",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/openai/plugins",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "google-contacts@openai-curated-remote",
+      "name": "Google Contacts",
+      "version": "1.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "not declared",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "google-drive@openai-curated-remote",
+      "name": "Google Drive",
+      "version": "0.1.22",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/openai/plugins",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "hyperframes@openai-curated-remote",
+      "name": "HyperFrames by HeyGen",
+      "version": "0.1.2",
+      "marketplace": "openai-curated-remote",
+      "license": "Apache-2.0",
+      "repository": "https://github.com/heygen-com/hyperframes",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "impeccable@openai-curated-remote",
+      "name": "Impeccable",
+      "version": "4.3.1",
+      "marketplace": "openai-curated-remote",
+      "license": "Apache-2.0",
+      "repository": "https://github.com/pbakaus/impeccable",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "openai-templates@openai-curated-remote",
+      "name": "Default templates",
+      "version": "0.1.1",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/oai-maintained-plugins/tree/main/plugins/openai-templates",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "pages@openai-curated-remote",
+      "name": "Pages",
+      "version": "0.1.26",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "plugin-management@openai-curated-remote",
+      "name": "Plugin Management",
+      "version": "0.1.0",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins/plugins/plugin-management",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "product-design@openai-curated-remote",
+      "name": "Product Design",
+      "version": "0.1.56",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins/plugins/product-design",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "remotion@openai-curated-remote",
+      "name": "Remotion",
+      "version": "4.0.534",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/remotion-dev/remotion",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "sites@openai-curated-remote",
+      "name": "Sites",
+      "version": "1.1.3",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": null,
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "supabase@openai-curated-remote",
+      "name": "Supabase",
+      "version": "1.0.0",
+      "marketplace": "openai-curated-remote",
+      "license": "MIT",
+      "repository": "https://github.com/supabase-community/supabase-plugin",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "vercel@openai-curated-remote",
+      "name": "Vercel",
+      "version": "0.54.1",
+      "marketplace": "openai-curated-remote",
+      "license": "Apache-2.0",
+      "repository": "https://github.com/vercel/vercel-plugin",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "work-pets@openai-curated-remote",
+      "name": "Pets",
+      "version": "0.1.6",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins/plugins/pets",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    },
+    {
+      "id": "write-like-me@openai-curated-remote",
+      "name": "Writing Style",
+      "version": "0.1.1",
+      "marketplace": "openai-curated-remote",
+      "license": "Proprietary",
+      "repository": "https://github.com/openai/openai/tree/master/chatgpt/oai-maintained-plugins/plugins/write-like-me",
+      "delivery": "Install through Codex Plugins; authenticate separately. Cache presence is not proof of connection."
+    }
+  ]
+}
