@@ -50,7 +50,7 @@ For MiroFish follow [runtime instructions](../codex/skills/mirofish/references/r
 - Installer tests cover fresh/idempotent installs, conflict refusal with no writes, backed-up replacement, symlink refusal, and absent source files. The original portable installer tests also pass.
 - Graphify 0.9.103 created a code-only fixture graph containing 3 nodes and 3 edges without model calls.
 - Agent-Reach 1.6.1 read the public Graphify GitHub repository successfully (`ok: true`, one result). Other platforms are not certified by this check.
-- MiroFish source checkout and frontend dependency installation/production build passed. Frozen backend dependency setup is still downloading large Torch/CUDA packages; it is not yet certified complete. No provider calls or simulations are part of installation verification.
+- MiroFish source checkout and frontend dependency installation/production build passed. The optional frozen backend dependency download was stopped before completion because the skill installation does not require a fully configured application. Its cache is preserved; backend runtime readiness is not claimed. No provider calls or simulations are part of installation verification.
 
 Upstream runtime dependencies are not security-certified. The pinned MiroFish root npm lockfile reports two critical root audit entries in the concurrently/shell-quote dependency chain ([GHSA-pqg4-j6r4-53mv](https://github.com/advisories/GHSA-pqg4-j6r4-53mv)); The frontend separately reports 12 high and 1 moderate audit entries; no automatic dependency changes were made. The documented startup uses separate processes rather than the root concurrently command.
 
@@ -63,3 +63,11 @@ License/provenance notices accompany each skill. Graphify retains Apache-2.0, MI
 - **Open SEO:** scoped adapter retains native workflow references. Upstream's full Claude plugin is under `plugins/openseo`; its connector is `https://app.openseo.so/mcp`. OAuth/account configuration and DataForSEO credentials/credits are separate. No hosted connector was registered, no site was changed and no paid SEO operation was run.
 
 These adapters are the installed skills, not evidence that their external application/service is configured. Their manual-only policies prevent automatic application operations from skill discovery.
+
+To resume the optional MiroFish backend dependency setup on the installation machine:
+
+```bash
+uv sync --frozen --project ~/.local/share/mirofish/backend --python 3.12
+```
+
+The pinned backend includes large Torch/CUDA dependencies even before provider configuration. Skill installation is complete independently of this optional runtime setup.
