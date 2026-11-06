@@ -49,3 +49,7 @@ Plugin caches, proprietary/system skill bodies, credentials and remote service
 implementations are not redistributed. `setup/plugins.json` records only public
 package metadata and installation requirements. Each recipient installs plugins
 through their own Codex distribution and connects their own accounts.
+
+## Repository integrations (2026-11-06)
+
+The six portable assistant integrations are documented in `docs/REPO-INTEGRATIONS.md`. Their `SOURCE-NOTICE.md` files pin the actual upstream revisions and distinguish local adapters from copied workflow references. Original licenses and attribution remain with copied material; runtime applications, credentials, model weights and connected accounts are not included in this repository. VoiceStudio and MiroFish retain their upstream AGPL notices; no relicensing is implied.

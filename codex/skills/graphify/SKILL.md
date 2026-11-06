@@ -26,3 +26,7 @@ This is a local adaptation of a pinned third-party skill. Use its workflow only 
 Use this workflow only for a requested graph, a cross-file relationship question that benefits from an existing graph, or explicit graphify work. Do not index every repository question. Inspect existing graph data first. The upgrade/install/LLM/API/Neo4j/upload/server commands in the reference are optional capabilities, not setup steps to execute automatically.
 
 Source provenance and licensing caveats: [SOURCE-NOTICE.md](SOURCE-NOTICE.md).
+
+## Installed runtime
+
+Use `graphify --help` to inspect the installed CLI. For a local, credential-free code graph: `graphify extract <path> --code-only --no-cluster`. Read [runtime.md](references/runtime.md) before setup or smoke tests.
