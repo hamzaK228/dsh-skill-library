@@ -19,4 +19,3 @@ Reviewed files:
 - [swagger/definitions/request/conversation/create_message_payload.yml](https://github.com/chatwoot/chatwoot/blob/d262508b6b6f7386d05f1470a7e840141c3e561b/swagger/definitions/request/conversation/create_message_payload.yml)
 
 These instructions are portable text for Codex and Claude Code. They do not install or execute the product, configure agents, create credentials, or authorize external actions. Runtime functionality was documented from sources; no installed-app, authenticated API, MCP, recording, or account workflow was exercised.
-

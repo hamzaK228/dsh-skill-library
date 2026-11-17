@@ -15,4 +15,3 @@ Reviewed files:
 - [apps/cli/skill/cap/SKILL.md](https://github.com/capsoftware/cap/blob/a42f8f44f61c02b50302d755c41a7b739947a3e7/apps/cli/skill/cap/SKILL.md)
 
 These instructions are portable text for Codex and Claude Code. They do not install or execute the product, configure agents, create credentials, or authorize external actions. Runtime functionality was documented from sources; no installed-app, authenticated API, MCP, recording, or account workflow was exercised.
-
