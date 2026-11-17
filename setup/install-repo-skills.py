@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the six repository integrations for Codex and/or Claude Code."""
+"""Install portable repository integrations for Codex and/or Claude Code."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -8,23 +8,28 @@ from pathlib import Path
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ('graphify', 'agent-reach', 'mirofish', 'paperclip', 'voicestudio', 'open-seo')
+SKILLS = ('graphify', 'agent-reach', 'mirofish', 'paperclip', 'voicestudio', 'open-seo',
+          'motionclone', 'davinci-resolve-mcp', 'openmontage', 'youtube-agent', 'instagram-agent',
+          'open-higgsfield-ai', 'openwhispr', 'chatwoot', 'cap')
 
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--home', type=Path, default=Path.home())
     p.add_argument('--target', choices=('codex', 'claude', 'both'), default='both')
+    p.add_argument('--skill', action='append', choices=SKILLS,
+                   help='Install/verify only this integration; repeat to select several (default: all)')
     p.add_argument('--dry-run', action='store_true')
     p.add_argument('--verify', action='store_true')
     p.add_argument('--replace', action='store_true', help='Back up each differing file before replacing it')
     args = p.parse_args()
     home = args.home.expanduser().absolute()
     targets = ('codex', 'claude') if args.target == 'both' else (args.target,)
+    skills = tuple(dict.fromkeys(args.skill or SKILLS))
     manifest = json.loads((ROOT / 'setup/manifest.json').read_text())['files']
     planned, errors = [], []
     for target in targets:
-        for name in SKILLS:
+        for name in skills:
             source_root = ROOT / 'codex/skills' / name
             prefix = f'codex/skills/{name}/'
             expected_paths = sorted(key for key in manifest if key.startswith(prefix))
@@ -74,7 +79,7 @@ def main():
         for dest, data, _ in planned:
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(data)
-    print(json.dumps({'targets': targets, 'skills': list(SKILLS), 'changed_files': len(planned),
+    print(json.dumps({'targets': targets, 'skills': list(skills), 'changed_files': len(planned),
                       'mode': 'verify' if args.verify else 'dry-run' if args.dry_run else 'install',
                       'backup': str(backup) if any(x[2] for x in planned) and not args.dry_run and not args.verify else None}))
 

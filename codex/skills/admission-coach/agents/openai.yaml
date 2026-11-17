@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admission Coach"
+  short_description: "Personal admissions, exam prep, and essay coaching"
+  default_prompt: "Use $admission-coach to help me choose my next step for admissions, exam preparation, or an application essay."

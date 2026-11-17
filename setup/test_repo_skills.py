@@ -19,8 +19,26 @@ class RepoSkillsTests(unittest.TestCase):
             self.assertEqual(r.returncode, 0, r.stderr)
             self.assertEqual(self.run_install(home, '--verify').returncode, 0)
             self.assertIn('"changed_files": 0', self.run_install(home).stdout)
-            for name in ('graphify', 'agent-reach', 'mirofish', 'paperclip', 'voicestudio', 'open-seo'):
+            for name in ('graphify', 'agent-reach', 'mirofish', 'paperclip', 'voicestudio', 'open-seo',
+                         'motionclone', 'davinci-resolve-mcp', 'openmontage', 'youtube-agent',
+                         'instagram-agent', 'open-higgsfield-ai', 'openwhispr', 'chatwoot', 'cap'):
                 self.assertEqual((home/'.codex/skills'/name/'SKILL.md').read_bytes(), (home/'.claude/skills'/name/'SKILL.md').read_bytes())
+
+    def test_selected_skills_preserve_unselected_and_other_target(self):
+        with tempfile.TemporaryDirectory(prefix='selected skill home ') as d:
+            home = Path(d)
+            untouched = home/'.claude/skills/graphify/SKILL.md'
+            untouched.parent.mkdir(parents=True); untouched.write_text('custom preserved')
+            r = self.run_install(home, '--target', 'claude', '--skill', 'youtube-agent',
+                                 '--skill', 'instagram-agent', '--skill', 'youtube-agent')
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertFalse((home/'.codex').exists())
+            self.assertEqual(untouched.read_text(), 'custom preserved')
+            self.assertEqual(sorted(p.name for p in (home/'.claude/skills').iterdir()),
+                             ['graphify', 'instagram-agent', 'youtube-agent'])
+            self.assertTrue((home/'.claude/skills/youtube-agent/references/skills/yt-edit/deadair.py').is_file())
+            self.assertEqual(self.run_install(home, '--target', 'claude', '--skill', 'youtube-agent',
+                                              '--skill', 'instagram-agent', '--verify').returncode, 0)
 
     def test_conflict_preserved_and_replace_backed_up(self):
         with tempfile.TemporaryDirectory() as d:
