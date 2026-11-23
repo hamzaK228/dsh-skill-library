@@ -1,7 +1,7 @@
 {
-  "snapshot_date": "2026-11-17",
+  "snapshot_date": "2026-11-23",
   "home_placeholder": "@@SETUP_HOME@@",
-  "skills": 105,
+  "skills": 106,
   "agency_profiles": 283,
   "files": {
     "codex/agents/agency_academic_anthropologist.toml": "2c5f7a5738a32fdafe205fe74ae411f014c1605c7fdd846a445c0850e713e614",
@@ -1175,6 +1175,10 @@
     "codex/skills/handoff/SOURCE-NOTICE.md": "d6d9d684caf6fe2ff766d06f27133baf70fd33fc88ea3b3a8fbb593ea3950cf8",
     "codex/skills/handoff/UPSTREAM.md": "4cbb043950dad2ffd3662ff1a5a0b51ae676004b5cae10e3787e8ee7a4ee69d3",
     "codex/skills/handoff/agents/openai.yaml": "9f26e1853a53944c701724aa0358c9c2d0013eae52c90f4ab290300b2208981c",
+    "codex/skills/humanizer/LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96",
+    "codex/skills/humanizer/SKILL.md": "3013910ef5433dab12f0d2b86d9cf9e3421a253ef986518a68ef07aa29629bdc",
+    "codex/skills/humanizer/SOURCE-NOTICE.md": "f3aacd1ec797d5d7077fe140e488cd10758fef61d5f437d846f5faa25e6b4578",
+    "codex/skills/humanizer/agents/openai.yaml": "9d87ff83149a04f86a372948b8ee35fa249de20923867bbc2a49304290aad736",
     "codex/skills/impeccable/SKILL.md": "88e9a46a91b6ddd1059f03f578bd0f9bbe6d212d6a395124379b9bb5c97c5cf2",
     "codex/skills/impeccable/agents/impeccable_asset_producer.toml": "4dbdb0cfdc2466961da6b22d200f3ec7bf8bb47c27448a2e6e3c03cdbf589831",
     "codex/skills/impeccable/agents/impeccable_documenter.toml": "2feb3768125ba6469c92a50d516727e6d42f44579165ddfd33409948e2a3803d",
