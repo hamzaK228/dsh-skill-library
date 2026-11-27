@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -39,6 +40,23 @@ class RepoSkillsTests(unittest.TestCase):
             self.assertTrue((home/'.claude/skills/youtube-agent/references/skills/yt-edit/deadair.py').is_file())
             self.assertEqual(self.run_install(home, '--target', 'claude', '--skill', 'youtube-agent',
                                               '--skill', 'instagram-agent', '--verify').returncode, 0)
+
+    def test_frontend_pack_installs_only_the_declared_skills(self):
+        manifest = json.loads(SCRIPT.with_name('manifest.json').read_text())
+        expected = sorted(manifest['frontend_skills'])
+        self.assertIn('better-interface', expected)
+        with tempfile.TemporaryDirectory(prefix='frontend skill home ') as d:
+            home = Path(d)
+            dry_run = self.run_install(home, '--frontend', '--dry-run')
+            self.assertEqual(dry_run.returncode, 0, dry_run.stderr)
+            self.assertFalse((home/'.codex').exists())
+            result = self.run_install(home, '--frontend')
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for target in ('codex', 'claude'):
+                self.assertEqual(sorted(p.name for p in (home/f'.{target}'/'skills').iterdir()), expected)
+            verify = self.run_install(home, '--frontend', '--verify')
+            self.assertEqual(verify.returncode, 0, verify.stderr)
+            self.assertEqual(json.loads(verify.stdout)['changed_files'], 0)
 
     def test_conflict_preserved_and_replace_backed_up(self):
         with tempfile.TemporaryDirectory() as d:

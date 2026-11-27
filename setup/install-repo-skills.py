@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install portable repository integrations for Codex and/or Claude Code."""
+"""Install selected portable skills for Codex and/or Claude Code."""
 import argparse
 from datetime import datetime, timezone
 import hashlib
@@ -14,25 +14,31 @@ SKILLS = ('graphify', 'agent-reach', 'mirofish', 'paperclip', 'voicestudio', 'op
 
 
 def main():
+    manifest = json.loads((ROOT / 'setup/manifest.json').read_text())
+    frontend_skills = tuple(manifest.get('frontend_skills', ()))
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--home', type=Path, default=Path.home())
     p.add_argument('--target', choices=('codex', 'claude', 'both'), default='both')
-    p.add_argument('--skill', action='append', choices=SKILLS,
-                   help='Install/verify only this integration; repeat to select several (default: all)')
+    selection = p.add_mutually_exclusive_group()
+    selection.add_argument('--skill', action='append', choices=tuple(dict.fromkeys((*SKILLS, *frontend_skills))),
+                           help='Install/verify only this skill; repeat to select several')
+    selection.add_argument('--frontend', action='store_true', help='Install/verify the frontend skill pack')
     p.add_argument('--dry-run', action='store_true')
     p.add_argument('--verify', action='store_true')
     p.add_argument('--replace', action='store_true', help='Back up each differing file before replacing it')
     args = p.parse_args()
     home = args.home.expanduser().absolute()
     targets = ('codex', 'claude') if args.target == 'both' else (args.target,)
-    skills = tuple(dict.fromkeys(args.skill or SKILLS))
-    manifest = json.loads((ROOT / 'setup/manifest.json').read_text())['files']
+    skills = tuple(dict.fromkeys(frontend_skills if args.frontend else args.skill or SKILLS))
+    if not skills:
+        raise ValueError('No frontend skills declared in the manifest.')
+    hashes = manifest['files']
     planned, errors = [], []
     for target in targets:
         for name in skills:
             source_root = ROOT / 'codex/skills' / name
             prefix = f'codex/skills/{name}/'
-            expected_paths = sorted(key for key in manifest if key.startswith(prefix))
+            expected_paths = sorted(key for key in hashes if key.startswith(prefix))
             if prefix + 'SKILL.md' not in expected_paths:
                 raise ValueError(f'Missing skill in manifest: {name}')
             for key in expected_paths:
@@ -43,7 +49,7 @@ def main():
                 if any(x.is_symlink() for x in (src, *src.parents)):
                     raise ValueError(f'Source symlink refused: {src}')
                 data = src.read_bytes()
-                if hashlib.sha256(data).hexdigest() != manifest[src.relative_to(ROOT).as_posix()]:
+                if hashlib.sha256(data).hexdigest() != hashes[key]:
                     raise ValueError(f'Source hash mismatch: {src}')
                 dest = home / f'.{target}/skills' / name / src.relative_to(source_root)
                 if any(x.is_symlink() for x in (dest, *dest.parents)):

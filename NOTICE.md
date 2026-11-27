@@ -53,3 +53,7 @@ through their own Codex distribution and connects their own accounts.
 ## Repository integrations (2026-11-06)
 
 The 15 portable assistant integrations are documented in `docs/REPO-INTEGRATIONS.md`. Their `SOURCE-NOTICE.md` files pin available upstream revisions and distinguish original adapters from copied workflow references. MotionClone's website is recorded with its review date because its linked source repository was unavailable. Original licenses and attribution remain with copied material; runtime applications, credentials, model weights and connected accounts are not included in this repository. VoiceStudio and MiroFish retain their upstream AGPL notices; YouTube and Instagram preserve their MIT licenses. Original instruction entrypoints for other applications do not redistribute their runtimes or relicense upstream components.
+
+## Frontend skills (2026-11-27)
+
+The [frontend inventory](docs/FRONTEND-SKILLS.md) records reviewed source revisions and licensing evidence. Packaged skills preserve their source notices and applicable license files. Local entrypoints document host boundaries and preserve explicit invocation policies. Restricted and unresolved bundles are recorded as references.
